@@ -1,0 +1,130 @@
+.team-boxed {
+    color:#313437;
+    background-color:#eef4f7;
+  }
+  
+  .team-boxed p {
+    padding-top: 0px;
+    color:#ff5100;
+  }
+  
+  .team-boxed h2 {
+    font-weight:bold;
+    margin-bottom:20px;
+    padding-top:40px;
+    color:inherit;
+  }
+  
+  @media (max-width:767px) {
+    .team-boxed h2 {
+      margin-bottom:25px;
+      padding-top:25px;
+      font-size:24px;
+    }
+  }
+  
+  .team-boxed .intro {
+    font-size:16px;
+    max-width:500px;
+    margin:0 auto;
+  }
+  
+  .team-boxed .intro p {
+    margin-bottom:0;
+  }
+  
+  .team-boxed .people {
+    padding:50px 0;
+  }
+  
+  .team-boxed .item {
+    text-align:center;
+  }
+  
+  .team-boxed .item .box {
+    text-align:center;
+    padding:30px;
+    background-color:#fff;
+    margin-bottom:30px;
+  }
+  
+  
+  .team-boxed .item .name {
+    font-weight:bold;
+    font-size: 20px;
+    margin-top:28px;
+    margin-bottom:8px;
+    color:inherit;
+  }
+  
+  .team-boxed .item .title {
+    font-weight:bold;
+    color:#d0d0d0;
+    font-size:13px;
+  }
+  
+  .team-boxed .item .description {
+    font-size:15px;
+    margin-top:15px;
+    margin-bottom:20px;
+  }
+  
+  .team-boxed .item img {
+    max-width:200px;
+  }
+  
+  .team-boxed .social {
+    font-size:18px;
+    color:#a2a8ae;
+  }
+  
+  .team-boxed .social a {
+    color:inherit;
+    margin:0 10px;
+    display:inline-block;
+    opacity:0.7;
+  }
+  
+  .team-boxed .social a:hover {
+    opacity:1;
+  }
+  .container-fluid{
+    padding: 0px;
+    justify-content: space-around !important;
+  }
+.logo{
+    width: 100px;
+}  
+.navbar-brand {
+    margin-left: 10px;
+    color: #ff7b00 !important;
+}
+.text{
+    margin-left: 20px;
+}
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn-outline-success {
+    color: #ff7b00;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff7b00;
+}
+.btn-outline-success:hover{
+    background-color: #ff7b00;
+    border-color: #ff7b00;
+}
+.item{
+    animation: ease-in-out 0.5s;
+    border-radius: 4px;
+}
+.item:hover{
+transform: scale(1.02);
+animation: ease-in-out 0.2s;
+}
+.rounded-circle{
+    border-radius: 6px !important;
+}
