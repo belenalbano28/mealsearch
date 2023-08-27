@@ -4,6 +4,7 @@ $( document ).ready(function() {
 
         letter=generateRandomLetter();
         recetasletra(letter);
+        cargarcategorias();
  
 });
 
@@ -46,7 +47,7 @@ function recetasletra(letter){
             }
     
            }
-           return true;
+           
       
        
       }).catch(function(err) {
@@ -130,8 +131,83 @@ function recetasnombre(n){
             }
     
            }
-           return true;
+          
        
+      
+       
+      }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+}
+
+function cargarcategorias(){
+    url="https://www.themealdb.com/api/json/v1/1/categories.php"
+    fetch(url).then(function(response) {
+       return response.json();
+      }).then(function(data) {
+        
+        data = JSON.stringify(data);
+       var array= new Array(JSON.parse(data));
+       var combo=document.getElementById('combo');
+       var x;
+
+        for (let index = 0; index < array[0].categories.length; index++) {
+            var z=$('#combo').html();
+            var c=array[0].categories[index].strCategory;
+            var s=index+1;
+            x='<input class="selectopt" name="test" type="radio" onclick=categorias('+s+') id="opt'+s+'"><label id="'+s+'" for="opt'+s+'" class="option">'+c+'</label>';
+            combo.innerHTML=x+z;
+           }
+          
+      
+       
+      }).catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+}
+
+function categorias(s){
+    var nombre=$('#'+s).html();
+    console.log();
+    url="https://www.themealdb.com/api/json/v1/1/filter.php?c="+nombre
+    fetch(url).then(function(response) {
+       return response.json();
+      }).then(function(data) {
+        console.log(data);
+        data = JSON.stringify(data);
+       var array= new Array(JSON.parse(data));
+       var y;
+       var recetas=document.getElementById('recetas');
+       recetas.innerHTML='';
+
+        for (let index = 0; index < array[0].meals.length; index++) {
+            var z=$('#recetas').html();
+            var idMeal=array[0].meals[index].idMeal;
+            var nombre=array[0].meals[index].strMeal;
+            var foto=array[0].meals[index].strMealThumb;
+            var video=array[0].meals[index].strYoutube;
+            if(index%3==0){
+                y=index;
+                //primera vez,multiplo de 3. 0,3,6,9
+                var x='';
+               x='<div class="row people"><div class="col-md-6 col-lg-4 item" onclick="pasardatos('+idMeal+')" ><div class="box"><img class="rounded-circle" src="'+foto+'"><h3 class="name">'+nombre+'</h3><a class="title" href="'+video+'">Youtube Video here</a></div></div>';
+               if(index==array[0].meals.length-1){
+                recetas.innerHTML = z+x+'</div>';
+             }
+            }else if(index==y+1){
+                //segundo item 
+                x+='<div class="col-md-6 col-lg-4 item" onclick="pasardatos('+idMeal+')" ><div class="box"><img class="rounded-circle" src="'+foto+'"><h3 class="name">'+nombre+'</h3><a class="title" href="'+video+'">Youtube Video here</a></div></div>';
+                if(index==array[0].meals.length-1){
+                    recetas.innerHTML = z+x+'</div>' ;
+                }
+            }else if(index==y+2){
+                //el ultimo item
+                x+='<div class="col-md-6 col-lg-4 item" onclick="pasardatos('+idMeal+')" ><div class="box"><img class="rounded-circle" src="'+foto+'"><h3 class="name">'+nombre+'</h3><a class="title" href="'+video+'">Youtube Video here</a></div></div></div>';
+                recetas.innerHTML = x+z;
+            }
+    
+           }
+           
       
        
       }).catch(function(err) {
