@@ -15,7 +15,6 @@ function recetasletra(letter){
       }).then(function(data) {
         data = JSON.stringify(data);
        var array= new Array(JSON.parse(data));
-       console.log(array);
        var y;
        var recetas=document.getElementById('recetas');
        recetas.innerHTML='';
@@ -101,7 +100,6 @@ function recetasnombre(n){
       }).then(function(data) {
         data = JSON.stringify(data);
        var array= new Array(JSON.parse(data));
-       console.log(array);
        var y;
        var recetas=document.getElementById('recetas');
        recetas.innerHTML='';
